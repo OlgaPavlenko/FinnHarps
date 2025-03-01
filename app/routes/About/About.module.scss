@@ -1,0 +1,15 @@
+@use "../Main/variables.scss";
+
+.about {
+  padding-bottom: 50px;
+  background-color: variables.$background;
+}
+
+.container {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.hightlight {
+  font-weight: 700;
+}

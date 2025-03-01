@@ -1,0 +1,63 @@
+@use "../../routes/Main/variables.scss";
+
+.team {
+  background-color: variables.$background;
+  // background: radial-gradient(
+  //   circle,
+  //   rgba(224, 217, 217, 1) 9%,
+  //   rgba(224, 217, 217, 1) 47%,
+  //   rgba(219, 212, 212, 1) 49%,
+  //   rgba(177, 173, 173, 0.7679446778711485) 65%,
+  //   rgba(194, 189, 189, 1) 74%
+  // );
+  margin: 0 auto;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 3.13rem 3.13rem;
+}
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 50px;
+}
+
+.card {
+  display: flex;
+  column-gap: 5rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.picWrap {
+  max-width: 25rem;
+}
+
+.pic {
+  width: 100%;
+  object-fit: cover;
+  // box-shadow: 3px 3px 10px 0px $main-aсcent;
+  // border-radius: 50% 20% / 10% 40%;
+  // border-radius: 50%;
+}
+
+.role {
+  color: variables.$main-aсcent;
+  font-weight: 700;
+  margin-bottom: 1.88rem;
+}
+
+.description {
+  text-transform: uppercase;
+  text-align: left;
+  max-width: 28.13rem;
+  color: variables.$main-aсcent;
+  font-weight: 700;
+}
+
+.coachDescription {
+  font-size: 0.63rem;
+}
