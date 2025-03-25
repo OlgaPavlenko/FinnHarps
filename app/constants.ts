@@ -83,7 +83,7 @@ export const formFields = [
   {
     id: "phone",
     name: "phone",
-    placeholder: "Contact Phone Number 000-000-0000",
+    placeholder: "Phone Number 000-000-0000",
   },
 ];
 
@@ -118,3 +118,9 @@ export const principals = [
     ],
   },
 ];
+
+export const SERVER_PATHS = {
+  signin: "/auth/login",
+  registration: "/auth/register",
+  users: "/users",
+};

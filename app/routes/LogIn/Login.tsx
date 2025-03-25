@@ -10,72 +10,70 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+import type { IFormData, ILoginData } from "~/user/api/types";
 
-import { url, type IErrors } from "../SignUp/SignUp";
+import type { AppDispatch } from "~/store";
+import type { IErrors } from "../SignUp/SignUp";
 import { LockOutlined } from "@mui/icons-material";
-import axios from "axios";
+import { login } from "~/user/store/userAuthSlice";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
-interface IFormData {
-  email: string;
-  password: string;
-}
-
 const Login = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch<AppDispatch>();
 
   const [formData, setFormData] = useState<IFormData>({
     email: "",
     password: "",
   });
 
-  const [errors, setErrors] = useState({} as IErrors);
+  const [errors, setErrors] = useState<IErrors>({});
   const [valid, setValid] = useState(true);
 
-  const onSignIn = (event: React.FormEvent) => {
-    const { email, password } = formData;
+  const onSignIn = async (event: React.FormEvent) => {
     event.preventDefault();
     let isValid = true;
     let validationErrors: IErrors = {};
 
-    if (email === "" || email === null) {
+    if (formData.email === "" || formData.email === null) {
       isValid = false;
       validationErrors.email = "email required";
-    } else if (!/\S+@\S+\.\S+/.test(email as string)) {
+    } else if (!/\S+@\S+\.\S+/.test(formData.email as string)) {
       isValid = false;
       validationErrors.email = "email is not valid";
     }
 
-    if (password === "" || password === null) {
+    if (formData.password === "" || formData.password === null) {
       isValid = false;
       validationErrors.password = "password required";
-    } else if (password.length < 6) {
+    } else if (formData.password.length < 6) {
       isValid = false;
       validationErrors.password = "password length at least 6 char";
     }
 
-    axios
-      .get(url as string)
-      .then((result) => {
-        result.data.map((user: { email: string; password: string }) => {
-          if (user.email === formData.email) {
-            if (user.password === formData.password) {
-              alert("login successfully");
-              navigate("/about");
-            } else {
-              isValid = false;
-              validationErrors.password = "Wrong Password";
-            }
-          } else if (formData.email !== "") {
-            isValid = false;
-            validationErrors.email = "Wrong Email";
-          }
-        });
-        setErrors(validationErrors);
-        setValid(isValid);
-      })
-      .catch((err) => console.log(err));
+    if (!isValid) {
+      setErrors(validationErrors);
+      setValid(false);
+      return;
+    }
+
+    try {
+      const loginData: ILoginData = {
+        email: formData.email,
+        password: formData.password,
+      };
+
+      await dispatch(login(loginData)).unwrap();
+      navigate("/application");
+    } catch (error) {
+      setValid(false);
+      setErrors({
+        email: "Invalid email",
+        password: "Invalid password",
+      });
+    }
   };
 
   return (
@@ -100,18 +98,27 @@ const Login = () => {
         </Typography>
 
         <Box component="form" onSubmit={onSignIn} sx={{ mt: 1 }}>
-          {valid ? <></> : <span>{errors.email}</span>}
+          {!valid && errors.email && (
+            <Typography color="error" variant="caption" display="block">
+              {errors.email}
+            </Typography>
+          )}
           <TextField
             margin="normal"
             fullWidth
             label="Enter user email"
             variant="outlined"
             autoComplete="useremail"
+            value={formData.email}
             onChange={(event) =>
               setFormData({ ...formData, email: event.target.value })
             }
           />
-          {valid ? <></> : <span>{errors.password}</span>}
+          {!valid && errors.password && (
+            <Typography color="error" variant="caption" display="block">
+              {errors.password}
+            </Typography>
+          )}
           <TextField
             margin="normal"
             fullWidth
@@ -119,6 +126,7 @@ const Login = () => {
             type="password"
             variant="outlined"
             autoComplete="current-password"
+            value={formData.password}
             onChange={(event) =>
               setFormData({ ...formData, password: event.target.value })
             }

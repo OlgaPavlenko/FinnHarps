@@ -1,7 +1,7 @@
 @use "../../routes/Main/variables.scss";
 
 .header {
-  // position: absolute;
+  position: relative;
   background-color: variables.$background;
   background-image: url("/header.png");
   background-repeat: no-repeat;

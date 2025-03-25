@@ -1,4 +1,5 @@
 import * as Yup from "yup";
+import axios from "axios";
 
 import {
   Field,
@@ -26,14 +27,15 @@ const sendEmail = async (
   { setSubmitting }: FormikHelpers<Values>
 ) => {
   try {
-    const response = await fetch("http://localhost:3000/sendEmail", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(values),
-    });
+    const response = await axios.post(
+      `${import.meta.env.VITE_BASE_URL}/email/send`,
+      values,
+      {
+        headers: { "Content-Type": "application/json" },
+      }
+    );
 
-    const data = await response.json();
-    alert(data.message);
+    alert(response.data.message);
   } catch (error) {
     console.error("Error:", error);
     alert("Failed to send email.");
@@ -73,26 +75,6 @@ const SignupSchema = Yup.object().shape({
 });
 
 const JoinUs = () => {
-  // const onSubmitButton = async (
-  //   values: Values,
-  //   { setSubmitting, resetForm }: Function,
-  // ) => {
-  //   console.log('onSubmitButton');
-
-  //   try {
-  //     // Sending data to API
-  //     // const response = await axios.post('/api/sendEmail', values);
-  //     console.log('Your application has been submitted successfully!');
-  //     // alert('Your application has been submitted successfully!');
-  //     resetForm();
-  //   } catch (error) {
-  //     console.error('Error submitting form:', error);
-  //     alert(error);
-  //   } finally {
-  //     setSubmitting(false);
-  //   }
-  // };
-
   const renderFormFields = ({
     errors,
     touched,
@@ -129,7 +111,6 @@ const JoinUs = () => {
   return (
     <section className={styles.joinUs} id="anchor_join">
       <div className={styles.container}>
-        {/* <div className={styles.wrap}> */}
         <h1 className={styles.header}>Join our team</h1>
 
         <div className={styles.formWrap} id="register">
@@ -158,7 +139,6 @@ const JoinUs = () => {
             />
           </div>
         </div>
-        {/* </div> */}
       </div>
     </section>
   );

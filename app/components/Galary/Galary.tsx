@@ -1,17 +1,19 @@
-import 'swiper/css';
-import 'swiper/css/free-mode';
-import 'swiper/css/navigation';
-import 'swiper/css/thumbs';
-import 'swiper/css/pagination';
-import 'swiper/css/effect-coverflow';
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/navigation";
+import "swiper/css/thumbs";
+import "swiper/css/pagination";
+import "swiper/css/effect-coverflow";
 
-import { EffectCoverflow, Pagination } from 'swiper/modules';
-import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { EffectCoverflow, Pagination } from "swiper/modules";
+import { FreeMode, Navigation, Thumbs } from "swiper/modules";
+import { Swiper, SwiperSlide, type SwiperClass } from "swiper/react";
 
-import { galareRoutes } from '@/constants';
-import styles from './Galary.module.scss';
-import { useState } from 'react';
+import styles from "./Galary.module.scss";
+import { useState } from "react";
+import { galareRoutes } from "~/constants";
+
+// import { galareRoutes } from '@/constants';
 
 const Galary = () => {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperClass | null>(null);
@@ -28,10 +30,10 @@ const Galary = () => {
           loop={true}
           thumbs={{ swiper: thumbsSwiper }}
           modules={[EffectCoverflow, FreeMode, Navigation, Thumbs, Pagination]}
-          effect={'coverflow'}
+          effect={"coverflow"}
           grabCursor={true}
           centeredSlides={true}
-          slidesPerView={'auto'}
+          slidesPerView={"auto"}
           breakpoints={{
             480: {
               slidesPerView: 1,
@@ -53,7 +55,7 @@ const Galary = () => {
         >
           {galareRoutes.map((rout, index) => (
             <SwiperSlide key={index} className={styles.swiperSlide}>
-              <img src={rout} width={600} height={400} alt={''} />
+              <img src={rout} width={600} height={400} alt={""} />
             </SwiperSlide>
           ))}
         </Swiper>
@@ -66,11 +68,11 @@ const Galary = () => {
           watchSlidesProgress={true}
           modules={[FreeMode, Navigation, Thumbs, Pagination]}
           className="mySwiper"
-          style={{ width: '58%' }}
+          style={{ width: "58%" }}
         >
           {galareRoutes.map((rout, index) => (
             <SwiperSlide key={index} className={styles.swiperSlide}>
-              <img src={rout} width={250} height={50} alt={''} />
+              <img src={rout} width={250} height={50} alt={""} />
             </SwiperSlide>
           ))}
         </Swiper>

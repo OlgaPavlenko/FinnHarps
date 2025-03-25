@@ -1,5 +1,5 @@
-import React from 'react';
-import styles from './Banner.module.scss';
+import React from "react";
+import styles from "./Banner.module.scss";
 
 const Banner = () => {
   return (
@@ -8,12 +8,11 @@ const Banner = () => {
         <div className={styles.pic_wrap}>
           <img
             src="/banner_player.png"
-            alt={'banner image of player'}
+            alt="banner image of player"
             className={styles.pic}
-            fill
           />
         </div>
-        <div className="style.description">
+        <div className={styles.description}>
           <h1 className={styles.header_text}>
             founding of the football academy
           </h1>
@@ -22,7 +21,7 @@ const Banner = () => {
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry. Lorem Ipsum has been the industry's standard dummy text
               ever since the 1500s, when an unknown printer took a galley of
-              type{' '}
+              type{" "}
             </p>
             <p>
               and scrambled it to make a type specimen book. It has survived not

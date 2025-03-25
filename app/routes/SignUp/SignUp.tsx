@@ -11,8 +11,10 @@ import {
   Typography,
 } from "@mui/material";
 
+import type { AppDispatch } from "~/store";
 import { LockOutlined } from "@mui/icons-material";
-import axios from "axios";
+import { registration } from "~/user/store/userAuthSlice";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
@@ -27,6 +29,7 @@ export interface IErrors {
 export const url = import.meta.env.VITE_DB_URL;
 
 const SignUp = () => {
+  const dispatch: AppDispatch = useDispatch();
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -40,7 +43,7 @@ const SignUp = () => {
   const [errors, setErrors] = useState({} as IErrors);
   const [valid, setValid] = useState(true);
 
-  const onSignInButton = (event: React.FormEvent) => {
+  const onSignUpButton = (event: React.FormEvent) => {
     event.preventDefault();
     let isValid = true;
     let validationErrors: IErrors = {};
@@ -81,13 +84,15 @@ const SignUp = () => {
     setValid(isValid);
 
     if (Object.keys(validationErrors).length === 0) {
-      axios
-        .post(url as string, formData)
-        .then((result) => {
-          alert("Registered successfully");
-          navigate("/login");
-        })
-        .catch((err) => console.log(err));
+      dispatch(registration({ firstName, lastName, email, password }));
+      navigate("/application");
+      // axios
+      //   .post(url as string, formData)
+      //   .then((result) => {
+      //     alert("Registered successfully");
+      //     navigate("/login");
+      //   })
+      //   .catch((err) => console.log(err));
     }
   };
 
@@ -96,6 +101,8 @@ const SignUp = () => {
       component="main"
       maxWidth="xs"
       sx={{
+        // position: "absolute",
+
         display: "flex",
         justifyContent: "center",
         height: "100vh",
@@ -110,7 +117,7 @@ const SignUp = () => {
           Sign Up
         </Typography>
 
-        <Box component="form" onSubmit={onSignInButton} sx={{ mt: 1 }}>
+        <Box component="form" onSubmit={onSignUpButton} sx={{ mt: 1 }}>
           {valid ? <></> : <span>{errors.firstName}</span>}
           <TextField
             margin="normal"
@@ -184,7 +191,7 @@ const SignUp = () => {
             <Link href="#" variant="body2">
               Forgot password?
             </Link>
-            <Link href="#" variant="body2">
+            <Link href="/login" variant="body2">
               Sign In
             </Link>
           </Box>
