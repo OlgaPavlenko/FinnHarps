@@ -1,0 +1,72 @@
+.header {
+  position: relative;
+  background-color: #e0d9d9;
+  background-image: url("/header.png");
+  background-repeat: no-repeat;
+  height: 125vh;
+  width: 100%;
+}
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+  .header {
+    background-position: 42% 45%;
+  }
+}
+
+.container {
+  max-width: 1350px;
+  height: auto;
+  margin: 0 350px;
+}
+@media only screen and (max-width: 767.98px) {
+  .container {
+    max-width: 500px;
+  }
+}
+@media only screen and (min-width: 767.99px) and (max-width: 991.98px) {
+  .container {
+    max-width: 800px;
+  }
+}
+@media only screen and (min-width: 991.99px) and (max-width: 1243px) {
+  .container {
+    max-width: 1000px;
+  }
+}
+
+.textBlock {
+  padding-top: 8%;
+}
+
+.text {
+  color: white;
+  font-size: clamp(2rem, 10vw, 10vh);
+  font-weight: 700;
+  text-transform: uppercase;
+  text-align: left;
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .text {
+    font-size: 6vh;
+  }
+}
+.textHightlite {
+  color: #142a83;
+}
+
+.logo_text {
+  position: absolute;
+  left: -0.7%;
+  top: 53%;
+  transform: rotate(270deg);
+  color: white;
+  font-size: clamp(1rem, 3vw, 3vh);
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.logo_text_academy::after {
+  content: "";
+  display: block;
+  height: 2px;
+  background: white;
+}/*# sourceMappingURL=Header.module.css.map */

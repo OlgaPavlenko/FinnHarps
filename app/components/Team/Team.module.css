@@ -1,0 +1,50 @@
+.team {
+  background-color: #e0d9d9;
+  margin: 0 auto;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 3.13rem 3.13rem;
+}
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 50px;
+}
+
+.card {
+  display: flex;
+  column-gap: 5rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.picWrap {
+  max-width: 25rem;
+}
+
+.pic {
+  width: 100%;
+  object-fit: cover;
+}
+
+.role {
+  color: #142a83;
+  font-weight: 700;
+  margin-bottom: 1.88rem;
+}
+
+.description {
+  text-transform: uppercase;
+  text-align: left;
+  max-width: 28.13rem;
+  color: #142a83;
+  font-weight: 700;
+}
+
+.coachDescription {
+  font-size: 0.63rem;
+}/*# sourceMappingURL=Team.module.css.map */

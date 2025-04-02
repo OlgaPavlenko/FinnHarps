@@ -12,19 +12,12 @@ import {
 } from "@mui/material";
 
 import type { AppDispatch } from "~/store";
+import type { IErrors } from "~/user/api/types";
 import { LockOutlined } from "@mui/icons-material";
 import { registration } from "~/user/store/userAuthSlice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-
-export interface IErrors {
-  firstName?: string;
-  lastName?: string;
-  email?: string;
-  password?: string;
-  confPassword?: string;
-}
 
 export const url = import.meta.env.VITE_DB_URL;
 
@@ -86,13 +79,6 @@ const SignUp = () => {
     if (Object.keys(validationErrors).length === 0) {
       dispatch(registration({ firstName, lastName, email, password }));
       navigate("/application");
-      // axios
-      //   .post(url as string, formData)
-      //   .then((result) => {
-      //     alert("Registered successfully");
-      //     navigate("/login");
-      //   })
-      //   .catch((err) => console.log(err));
     }
   };
 

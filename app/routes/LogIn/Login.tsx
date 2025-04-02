@@ -10,10 +10,10 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import type { IFormData, ILoginData } from "~/user/api/types";
+import type { IErrors, IFormData, ILoginData } from "~/user/api/types";
 
 import type { AppDispatch } from "~/store";
-import type { IErrors } from "../SignUp/SignUp";
+// import type { IErrors } from "../SignUp/SignUp";
 import { LockOutlined } from "@mui/icons-material";
 import { login } from "~/user/store/userAuthSlice";
 import { useDispatch } from "react-redux";
@@ -66,7 +66,7 @@ const Login = () => {
       };
 
       await dispatch(login(loginData)).unwrap();
-      navigate("/application");
+      navigate("/app");
     } catch (error) {
       setValid(false);
       setErrors({

@@ -3,7 +3,8 @@ export interface IAuth {
   userFirstName: string;
   userLastName: string;
   userEmail: string;
-  isAuthenticated: boolean;
+  isAuthenticated?: boolean;
+  role: string;
   token: string | null;
 }
 
@@ -23,8 +24,9 @@ export interface IAuthResponse {
   firstName: string;
   lastName: string;
   email: string;
-  userId: string;
-  token: string;
+  id: string;
+  accessToken: string;
+  role: string;
 }
 
 export interface IFormData {
@@ -32,7 +34,15 @@ export interface IFormData {
   password: string;
 }
 
+// export interface IErrors {
+//   email?: string;
+//   password?: string;
+// }
+
 export interface IErrors {
+  firstName?: string;
+  lastName?: string;
   email?: string;
   password?: string;
+  confPassword?: string;
 }

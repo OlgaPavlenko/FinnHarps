@@ -1,0 +1,9 @@
+.navbar {
+  color: white;
+  text-transform: uppercase;
+}
+
+.bar {
+  display: flex;
+  column-gap: 1.111vh;
+}/*# sourceMappingURL=Navbar.module.css.map */

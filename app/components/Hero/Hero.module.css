@@ -1,0 +1,26 @@
+.hero {
+  background-color: black;
+  text-align: center;
+}
+
+.container {
+  max-width: 1340px;
+  height: auto;
+  margin: 0 auto;
+}
+
+.wrap {
+  padding: 80px 0;
+}
+
+.slogan {
+  color: white;
+  font-weight: 700;
+  font-size: clamp(1.5rem, 3.5vw, 7vh);
+  text-transform: uppercase;
+  margin-bottom: 40px;
+}
+
+.accent {
+  color: #142a83;
+}/*# sourceMappingURL=Hero.module.css.map */

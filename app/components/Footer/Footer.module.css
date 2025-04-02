@@ -1,0 +1,58 @@
+.footer {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  background-color: black;
+  color: white;
+}
+
+.container {
+  width: 1350px;
+  height: 100%;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+@media only screen and (max-width: 767.98px) {
+  .container {
+    max-width: 500px;
+  }
+}
+@media only screen and (min-width: 767.99px) and (max-width: 991.98px) {
+  .container {
+    max-width: 800px;
+  }
+}
+@media only screen and (min-width: 991.99px) and (max-width: 1243px) {
+  .container {
+    max-width: 1000px;
+  }
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+@media only screen and (max-width: 767.98px) {
+  .flex {
+    display: block;
+  }
+}
+
+.slogan {
+  text-transform: uppercase;
+  font-size: clamp(1.2rem, 2.5vw, 4rem);
+  font-weight: 700;
+}
+
+.hightlight {
+  color: #142a83;
+}
+
+.media {
+  display: flex;
+  column-gap: 35px;
+}
+
+.icon:hover {
+  color: #142a83;
+}/*# sourceMappingURL=Footer.module.css.map */

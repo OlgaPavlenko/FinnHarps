@@ -8,6 +8,10 @@ export const registration = createAsyncThunk<IAuthResponse, IAuthData>(
   "auth/registration",
   async (data) => {
     const response = await getRegistrationData(data);
+
+    if (response.accessToken) {
+      localStorage.setItem("accessToken", response.accessToken);
+    }
     return response;
   }
 );
@@ -16,6 +20,10 @@ export const login = createAsyncThunk<IAuthResponse, ILoginData>(
   "auth/login",
   async (data) => {
     const response = await getLoginData(data);
+    if (response.accessToken) {
+      console.log("TokenLog:", response.accessToken);
+      localStorage.setItem("accessToken", response.accessToken);
+    }
     return response;
   }
 );
@@ -34,6 +42,7 @@ const initialState: IAuth = {
   userLastName: "",
   userEmail: "",
   isAuthenticated: false,
+  role: "",
   token: getStoredToken(),
 };
 
@@ -50,6 +59,7 @@ export const authSlice = createSlice({
     setAuthFromToken(state, action) {
       state.token = action.payload;
       state.isAuthenticated = !!action.payload;
+      console.log(state.token);
     },
   },
   extraReducers: (builder) => {
@@ -58,9 +68,10 @@ export const authSlice = createSlice({
         state.userFirstName = action.payload.firstName;
         state.userLastName = action.payload.lastName;
         state.userEmail = action.payload.email;
-        state.userId = action.payload.userId;
+        state.userId = action.payload.id;
+        state.role = action.payload.role;
         state.isAuthenticated = true;
-        state.token = action.payload.token;
+        state.token = action.payload.accessToken;
       })
       .addCase(registration.rejected, (state, action) => {
         const { message } = action.error;
@@ -73,9 +84,9 @@ export const authSlice = createSlice({
         state.userFirstName = action.payload.firstName;
         state.userLastName = action.payload.lastName;
         state.userEmail = action.payload.email;
-        state.userId = action.payload.userId;
+        state.userId = action.payload.id;
         state.isAuthenticated = true;
-        state.token = action.payload.token;
+        state.token = action.payload.accessToken;
       })
       .addCase(login.rejected, (state, action) => {
         const { message } = action.error;

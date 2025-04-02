@@ -1,0 +1,129 @@
+.galary {
+  padding-top: 3.13rem;
+  padding-bottom: 3.13rem;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  width: 1350px;
+  height: 100%;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+@media only screen and (max-width: 767.98px) {
+  .container {
+    max-width: 500px;
+  }
+}
+@media only screen and (min-width: 767.99px) and (max-width: 991.98px) {
+  .container {
+    max-width: 800px;
+  }
+}
+@media only screen and (min-width: 991.99px) and (max-width: 1243px) {
+  .container {
+    max-width: 1000px;
+  }
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+}
+
+.swiperSlide img {
+  display: block;
+  width: 100%;
+  object-fit: cover;
+  opacity: 0.9;
+}
+
+.swiper {
+  width: 100%;
+  height: 200px;
+  margin: 0 auto;
+}
+
+.swiperSlide {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+}
+
+.mySwiper2 {
+  height: 80%;
+  width: 100%;
+}
+
+.mySwiper {
+  position: relative;
+  height: 20%;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 20px 0%;
+}
+
+.mySwiper .swiperSlide {
+  height: 100%;
+}
+
+.mySwiper .swipe-slide-thumb-active {
+  box-shadow: 3px 3px 10px 0px #142a83;
+}
+
+.swiperSlide img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.pagination {
+  position: absolute;
+  top: -50px !important;
+  height: 30px;
+  z-index: 10;
+}
+
+.swiper-pagination-bullet {
+  height: 4px;
+  width: 30px;
+  border-radius: 4px;
+  text-align: center;
+  line-height: 20px;
+  font-size: 0px;
+  color: #142a83;
+  opacity: 1;
+  background: #142a83;
+}
+
+.swiper-pagination-bullet-active {
+  color: #fff;
+  background: #142a83;
+  opacity: 1;
+}
+
+.description {
+  margin-top: 4.38rem;
+  color: white;
+  font-size: clamp(1rem, 1vw, 2vh);
+  text-align: justify;
+  column-count: 2;
+  column-gap: 5%;
+}
+@media only screen and (max-width: 767.98px) {
+  .description {
+    column-count: 1;
+  }
+}/*# sourceMappingURL=Galary.module.css.map */
