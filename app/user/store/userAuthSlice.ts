@@ -30,7 +30,7 @@ export const login = createAsyncThunk<IAuthResponse, ILoginData>(
 // Safe localStorage access
 const getStoredToken = (): string | null => {
   if (typeof window !== "undefined") {
-    return localStorage.getItem("authToken");
+    return localStorage.getItem("accessToken");
   }
   return null;
 };
@@ -51,7 +51,7 @@ export const authSlice = createSlice({
   reducers: {
     clearAuth(state) {
       if (typeof window !== "undefined") {
-        localStorage.removeItem("authToken");
+        localStorage.removeItem("accessToken");
       }
       return initialState;
     },

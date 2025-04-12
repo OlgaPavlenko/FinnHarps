@@ -6,7 +6,7 @@ import axios from "axios";
 // Safe localStorage access
 const setStoredToken = (token: string): void => {
   if (typeof window !== "undefined") {
-    localStorage.setItem("authToken", token);
+    localStorage.setItem("accessToken", token);
   }
 };
 
