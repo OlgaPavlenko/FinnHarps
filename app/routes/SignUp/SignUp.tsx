@@ -14,6 +14,7 @@ import {
 import type { AppDispatch } from "~/store";
 import type { IErrors } from "~/user/api/types";
 import { LockOutlined } from "@mui/icons-material";
+import Modal from "@mui/material/Modal";
 import { registration } from "~/user/store/userAuthSlice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -21,9 +22,28 @@ import { useState } from "react";
 
 export const url = import.meta.env.VITE_DB_URL;
 
+const style = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 400,
+  bgcolor: "background.paper",
+  border: "2px solid #000",
+  boxShadow: 24,
+  p: 4,
+};
+
 const SignUp = () => {
   const dispatch: AppDispatch = useDispatch();
   const navigate = useNavigate();
+
+  const [open, setOpen] = useState(true);
+  const handleClose = () => setOpen(false);
+  const handleDrawerClose = () => {
+    handleClose();
+    navigate(`/`);
+  };
 
   const [formData, setFormData] = useState({
     firstName: "",
@@ -83,19 +103,13 @@ const SignUp = () => {
   };
 
   return (
-    <Container
-      component="main"
-      maxWidth="xs"
-      sx={{
-        // position: "absolute",
-
-        display: "flex",
-        justifyContent: "center",
-        height: "100vh",
-        alignItems: "center",
-      }}
+    <Modal
+      open={open}
+      onClose={handleDrawerClose}
+      aria-labelledby="modal-modal-title"
+      aria-describedby="modal-modal-description"
     >
-      <Paper elevation={3} sx={{ p: 4, borderRadius: 3, textAlign: "center" }}>
+      <Box sx={style}>
         <Avatar sx={{ m: "auto", bgcolor: "purple" }}>
           <LockOutlined />
         </Avatar>
@@ -182,8 +196,8 @@ const SignUp = () => {
             </Link>
           </Box>
         </Box>
-      </Paper>
-    </Container>
+      </Box>
+    </Modal>
   );
 };
 
