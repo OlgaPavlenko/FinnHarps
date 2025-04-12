@@ -66,7 +66,7 @@ const Login = () => {
       };
 
       await dispatch(login(loginData)).unwrap();
-      navigate("/app");
+      navigate("/user");
     } catch (error) {
       setValid(false);
       setErrors({

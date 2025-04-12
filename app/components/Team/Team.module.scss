@@ -30,10 +30,17 @@
   column-gap: 5rem;
   align-items: center;
   justify-content: space-between;
+
+  @media only screen and (max-width: 991.98px) {
+    flex-direction: column;
+    text-align: center;
+    gap: 2rem;
+  }
 }
 
 .picWrap {
   max-width: 25rem;
+  color: black;
 }
 
 .pic {
@@ -45,7 +52,7 @@
 }
 
 .role {
-  color: variables.$main-aсcent;
+  // color: variables.$main-aсcent;
   font-weight: 700;
   margin-bottom: 1.88rem;
 }
@@ -54,8 +61,13 @@
   text-transform: uppercase;
   text-align: left;
   max-width: 28.13rem;
-  color: variables.$main-aсcent;
+  color: black;
   font-weight: 700;
+
+  @media only screen and (max-width: 767.98px) {
+    width: 100%;
+    padding: 0 15px;
+  }
 }
 
 .coachDescription {

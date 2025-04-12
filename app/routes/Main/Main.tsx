@@ -7,7 +7,7 @@ import JoinUs from "~/components/JoinUs";
 import Team from "~/components/Team";
 import styles from "./Main.module.css";
 
-export default function Home() {
+export default function Main() {
   return (
     <div className={styles.page}>
       <div className={styles.main}>

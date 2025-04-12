@@ -10,13 +10,29 @@ import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 import { Swiper, SwiperSlide, type SwiperClass } from "swiper/react";
 
 import styles from "./Galary.module.scss";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { galareRoutes } from "~/constants";
 
 // import { galareRoutes } from '@/constants';
 
 const Galary = () => {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperClass | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkIfMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    // Проверяем при загрузке
+    checkIfMobile();
+
+    // Добавляем слушатель изменения размера окна
+    window.addEventListener("resize", checkIfMobile);
+
+    // Очищаем слушатель при размонтировании компонента
+    return () => window.removeEventListener("resize", checkIfMobile);
+  }, []);
 
   return (
     <section className={styles.galary}>
@@ -68,7 +84,7 @@ const Galary = () => {
           watchSlidesProgress={true}
           modules={[FreeMode, Navigation, Thumbs, Pagination]}
           className="mySwiper"
-          style={{ width: "58%" }}
+          style={{ width: isMobile ? "90%" : "58%" }}
         >
           {galareRoutes.map((rout, index) => (
             <SwiperSlide key={index} className={styles.swiperSlide}>

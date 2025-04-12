@@ -34,11 +34,6 @@ export interface IFormData {
   password: string;
 }
 
-// export interface IErrors {
-//   email?: string;
-//   password?: string;
-// }
-
 export interface IErrors {
   firstName?: string;
   lastName?: string;

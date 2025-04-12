@@ -130,13 +130,7 @@ const JoinUs = () => {
           </Formik>
 
           <div className={styles.imgWrap}>
-            <img
-              src="/formImg.jpg"
-              alt={"form image"}
-              width={800}
-              height={600}
-              className={styles.img}
-            />
+            <img src="/formImg.jpg" alt={"form image"} className={styles.img} />
           </div>
         </div>
       </div>

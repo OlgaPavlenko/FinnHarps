@@ -18,6 +18,13 @@
   padding: 0 15px;
   margin: 0 auto;
 
+  @media only screen and (max-width: 518px) {
+    max-width: 100%;
+    width: 100%;
+    padding: 0 10px;
+    box-sizing: border-box;
+  }
+
   @media only screen and (max-width: 767.98px) {
     max-width: 500px;
   }
@@ -46,7 +53,14 @@
   flex-direction: column;
   color: black;
 
+  @media only screen and (max-width: 518px) {
+    width: 100%;
+    margin: 0 auto 30px;
+    box-sizing: border-box;
+  }
+
   @media only screen and (max-width: 767.98px) {
+    width: 100%;
     margin: 0 auto 50px;
   }
 }
@@ -65,6 +79,24 @@
 .imgWrap {
   max-width: 800px;
   max-height: 600px;
+
+  @media only screen and (max-width: 518px) {
+    max-width: 100%;
+    max-height: 350px;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+
+  @media only screen and (max-width: 767.98px) {
+    max-width: 100%;
+    max-height: 400px;
+    margin: 0 auto;
+  }
+
+  @media only screen and (min-width: 767.99px) and (max-width: 991.98px) {
+    max-width: 600px;
+    max-height: 450px;
+  }
 }
 
 .field {
@@ -75,6 +107,18 @@
   border-radius: 5px;
   min-height: 35px;
   transition: 0.5s;
+  box-sizing: border-box;
+
+  @media only screen and (max-width: 518px) {
+    font-size: 13px;
+    padding: 6px;
+    margin-bottom: 15px;
+  }
+
+  @media only screen and (max-width: 767.98px) {
+    font-size: 14px;
+    padding: 8px;
+  }
 }
 
 .field:active,
@@ -89,6 +133,23 @@
   object-fit: cover;
   // border-radius: 50% 20% / 10% 40%;
   box-shadow: 3px 3px 10px 0px variables.$main-aсcent;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  display: block;
+  box-sizing: border-box;
+
+  @media only screen and (max-width: 518px) {
+    max-height: 350px;
+  }
+
+  @media only screen and (max-width: 767.98px) {
+    max-height: 400px;
+  }
+
+  @media only screen and (min-width: 767.99px) and (max-width: 991.98px) {
+    max-height: 450px;
+  }
 }
 
 .button {

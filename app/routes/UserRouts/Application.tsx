@@ -1,4 +1,4 @@
-import { Box, Tab, Tabs, TextField } from "@mui/material";
+import { Box, Tab, Tabs, TextField, dividerClasses } from "@mui/material";
 
 import React from "react";
 import styles from "./Application.module.scss";
@@ -12,6 +12,7 @@ interface TabPanelProps {
 function CustomTabPanel(props: TabPanelProps) {
   const { children, value, index, ...other } = props;
 
+  // return <div>QWERTY</div>;
   return (
     <div
       role="tabpanel"

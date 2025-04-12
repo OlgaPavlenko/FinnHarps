@@ -3,21 +3,15 @@ import "./app.css";
 import {
   Links,
   Meta,
+  Outlet,
   Scripts,
   ScrollRestoration,
   isRouteErrorResponse,
 } from "react-router";
-import { Route, Routes } from "react-router-dom";
 
-import Application from "./routes/UserRouts/Application";
-import Contact from "./routes/Contact/Contact";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
-import Login from "./routes/LogIn/Login";
-import Main from "./routes/Main/Main";
-import PrivateRoute from "./routes/PrivateRoute";
 import { Provider } from "react-redux";
-import SignUp from "./routes/SignUp/SignUp";
 import { store } from "./store";
 import styles from "./Root.module.scss";
 
@@ -46,18 +40,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  return (
-    <Routes>
-      <Route path="/*" element={<Main />} />s
-      <Route path="/login" element={<Login />} />
-      <Route path="/registration" element={<SignUp />} />
-      <Route path="/contact" element={<Contact />} />
-      {/* Private routes */}
-      <Route element={<PrivateRoute />}>
-        <Route path="/application" element={<Application />} />
-      </Route>
-    </Routes>
-  );
+  return <Outlet />;
 }
 
 export function ErrorBoundary({ error }: { error: any }) {

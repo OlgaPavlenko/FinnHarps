@@ -15,7 +15,8 @@
 .container {
   max-width: 1350px;
   height: auto;
-  margin: 0 350px;
+  margin: 0 auto;
+  padding: 0 15px;
 
   @media only screen and (max-width: 767.98px) {
     max-width: 500px;
@@ -61,6 +62,17 @@
   font-size: clamp(1rem, 3vw, 3vh);
   text-transform: uppercase;
   text-align: center;
+
+  @media only screen and (max-width: 767.98px) {
+    left: -5%;
+    top: 40%;
+    font-size: 0.9rem;
+  }
+
+  @media only screen and (min-width: 768px) and (max-width: 991.98px) {
+    left: -3%;
+    top: 45%;
+  }
 }
 
 .logo_text_academy {
