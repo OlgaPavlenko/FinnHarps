@@ -9,6 +9,7 @@ export default defineConfig({
     alias: {
       "~": path.resolve(__dirname, "app"),
       "~/user": path.resolve(__dirname, "app/user"),
+      "~/admin": path.resolve(__dirname, "app/admin"),
       "~/store": path.resolve(__dirname, "app/store"),
     },
   },

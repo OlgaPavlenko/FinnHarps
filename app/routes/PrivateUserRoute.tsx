@@ -1,11 +1,18 @@
 import { Navigate, Outlet } from "react-router-dom";
+import {
+  isAuthenticatedSelector,
+  userRoleSelector,
+} from "~/user/store/selectors/auth";
 
-import { isAuthenticatedSelector } from "~/user/store/selectors/auth";
 import { useSelector } from "react-redux";
 
 export default function PrivateUserRoute() {
   const isAuth = useSelector(isAuthenticatedSelector);
-  // const isAuth = true;
+  const role = useSelector(userRoleSelector);
 
-  return isAuth ? <Outlet /> : <Navigate to="/login" replace />;
+  if (isAuth && role === "user") {
+    return <Outlet />;
+  } else {
+    <Navigate to="/login" replace />;
+  }
 }

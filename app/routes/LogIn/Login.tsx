@@ -11,18 +11,19 @@ import {
   Typography,
 } from "@mui/material";
 import type { IErrors, IFormData, ILoginData } from "~/user/api/types";
+import { useDispatch, useSelector } from "react-redux";
 
 import type { AppDispatch } from "~/store";
-// import type { IErrors } from "../SignUp/SignUp";
 import { LockOutlined } from "@mui/icons-material";
 import { login } from "~/user/store/userAuthSlice";
-import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { userRoleSelector } from "~/user/store/selectors/auth";
 
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
+  const role = useSelector(userRoleSelector);
 
   const [formData, setFormData] = useState<IFormData>({
     email: "",
@@ -66,7 +67,7 @@ const Login = () => {
       };
 
       await dispatch(login(loginData)).unwrap();
-      navigate("/user");
+      navigate(`/${role}`);
     } catch (error) {
       setValid(false);
       setErrors({

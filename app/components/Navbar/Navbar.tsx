@@ -21,10 +21,6 @@ import React from "react";
 import { ThemeProvider } from "@emotion/react";
 import { pages } from "~/constants";
 
-// import { Saira } from 'next/font/google';
-
-// const saira = Saira({ subsets: ['latin'] });
-
 const theme = createTheme({
   // typography: {
   //   fontFamily: saira.style.fontFamily,

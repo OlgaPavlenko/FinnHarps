@@ -7,7 +7,7 @@ export const baseUrl = (path: string | number): string => {
 export default class HTTPService {
   private static getAuthHeader() {
     const token = localStorage.getItem("accessToken");
-    console.log(token);
+
     return token ? { Authorization: `Bearer ${token}` } : {};
   }
 
@@ -41,7 +41,6 @@ export default class HTTPService {
       withCredentials: true,
     })
       .then((response: AxiosResponse) => {
-        console.log(response);
         return response;
       })
       .catch((err: AxiosError) => {

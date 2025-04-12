@@ -21,7 +21,6 @@ export const login = createAsyncThunk<IAuthResponse, ILoginData>(
   async (data) => {
     const response = await getLoginData(data);
     if (response.accessToken) {
-      console.log("TokenLog:", response.accessToken);
       localStorage.setItem("accessToken", response.accessToken);
     }
     return response;
@@ -59,7 +58,7 @@ export const authSlice = createSlice({
     setAuthFromToken(state, action) {
       state.token = action.payload;
       state.isAuthenticated = !!action.payload;
-      console.log(state.token);
+      // console.log(state.token);
     },
   },
   extraReducers: (builder) => {
@@ -86,6 +85,7 @@ export const authSlice = createSlice({
         state.userEmail = action.payload.email;
         state.userId = action.payload.id;
         state.isAuthenticated = true;
+        state.role = action.payload.role;
         state.token = action.payload.accessToken;
       })
       .addCase(login.rejected, (state, action) => {
