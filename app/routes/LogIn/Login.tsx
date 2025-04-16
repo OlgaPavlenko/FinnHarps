@@ -11,13 +11,13 @@ import {
 } from "@mui/material";
 import type { IErrors, IFormData, ILoginData } from "~/user/api/types";
 import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
 
 import type { AppDispatch } from "~/store";
 import { LockOutlined } from "@mui/icons-material";
 import Modal from "@mui/material/Modal";
 import { login } from "~/user/store/userAuthSlice";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
 import { userRoleSelector } from "~/user/store/selectors/auth";
 
 const style = {
@@ -49,11 +49,18 @@ const Login = () => {
     password: "",
   });
 
+  useEffect(() => {
+    if (role) {
+      navigate(`/${role}`);
+    }
+  }, [role]);
+
   const [errors, setErrors] = useState<IErrors>({});
   const [valid, setValid] = useState(true);
 
   const onSignIn = async (event: React.FormEvent) => {
     event.preventDefault();
+
     let isValid = true;
     let validationErrors: IErrors = {};
 
@@ -86,7 +93,6 @@ const Login = () => {
       };
 
       await dispatch(login(loginData)).unwrap();
-      navigate(`/${role}`);
     } catch (error) {
       setValid(false);
       setErrors({

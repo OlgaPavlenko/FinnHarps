@@ -7,6 +7,5 @@ export const getLoginData = async ({
   email,
 }: ILoginData): Promise<IAuthResponse> => {
   const { data } = await loginAPI({ password, email });
-
   return data;
 };

@@ -1,7 +1,7 @@
-import { Facebook, Instagram } from "@mui/icons-material";
-
-import type { ReactNode } from "react";
-import XIcon from "@mui/icons-material/X";
+import AccessibilityNewIcon from "@mui/icons-material/AccessibilityNew";
+import CheckroomIcon from "@mui/icons-material/Checkroom";
+import GroupIcon from "@mui/icons-material/Group";
+import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
 
 export const pages = [
   {
@@ -124,3 +124,22 @@ export const SERVER_PATHS = {
   registration: "/auth/register",
   users: "/users",
 };
+
+export const ADMIN_MENU = [
+  {
+    option: "Users",
+    icon: GroupIcon,
+  },
+  {
+    option: "Players",
+    icon: AccessibilityNewIcon,
+  },
+  {
+    option: "Gear",
+    icon: CheckroomIcon,
+  },
+  {
+    option: "Orders",
+    icon: ShoppingBagIcon,
+  },
+];

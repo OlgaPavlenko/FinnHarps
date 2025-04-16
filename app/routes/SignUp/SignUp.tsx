@@ -10,15 +10,16 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
 
 import type { AppDispatch } from "~/store";
 import type { IErrors } from "~/user/api/types";
 import { LockOutlined } from "@mui/icons-material";
 import Modal from "@mui/material/Modal";
 import { registration } from "~/user/store/userAuthSlice";
-import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { userRoleSelector } from "~/user/store/selectors/auth";
 
 export const url = import.meta.env.VITE_DB_URL;
 
@@ -37,6 +38,7 @@ const style = {
 const SignUp = () => {
   const dispatch: AppDispatch = useDispatch();
   const navigate = useNavigate();
+  const role = useSelector(userRoleSelector);
 
   const [open, setOpen] = useState(true);
   const handleClose = () => setOpen(false);
@@ -52,6 +54,12 @@ const SignUp = () => {
     password: "",
     confPassword: "",
   });
+
+  useEffect(() => {
+    if (role) {
+      navigate(`/${role}`);
+    }
+  }, [role]);
 
   const [errors, setErrors] = useState({} as IErrors);
   const [valid, setValid] = useState(true);
@@ -98,7 +106,7 @@ const SignUp = () => {
 
     if (Object.keys(validationErrors).length === 0) {
       dispatch(registration({ firstName, lastName, email, password }));
-      navigate("/application");
+      // navigate("/application");
     }
   };
 

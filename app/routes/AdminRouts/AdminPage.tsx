@@ -8,8 +8,7 @@ import {
   ListItemText,
 } from "@mui/material";
 
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
+import { ADMIN_MENU } from "~/constants";
 import styles from "./AdminPage.module.scss";
 
 const AdminPage = () => {
@@ -17,35 +16,21 @@ const AdminPage = () => {
     <div className={styles.main}>
       <Box sx={{ width: 250 }} role="presentation">
         <List>
-          {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-            <ListItem key={text} disablePadding>
+          {ADMIN_MENU.map((menuItem) => (
+            <ListItem key={menuItem.option} disablePadding>
               <ListItemButton>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
+                <ListItemIcon>{<menuItem.icon />}</ListItemIcon>
+                <ListItemText
+                  primary={menuItem.option}
+                  className={styles.text}
+                />
               </ListItemButton>
             </ListItem>
           ))}
         </List>
-        <Divider />
-        <List>
-          {["All mail", "Trash", "Spam"].map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
+        <Divider orientation="vertical" />
       </Box>
-      ;
-      <div className={styles.right}>
-        ghjlghjlgljghljgghjlgljghljgghjlgljghljgghjlgljghljgghjlgljghljgghjlgljghljgghjlgljghljggljghljg
-      </div>
+      ;<div className={styles.right}>Dashboard</div>
     </div>
   );
 };
