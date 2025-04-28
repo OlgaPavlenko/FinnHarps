@@ -13,6 +13,7 @@
     "@emotion/styled": "^11.14.0",
     "@mui/icons-material": "^5.16.14",
     "@mui/material": "^5.16.14",
+    "@mui/toolpad": "^0.1.51",
     "@mui/types": "^7.2.21",
     "@react-router/node": "^7.1.5",
     "@react-router/serve": "^7.1.5",
