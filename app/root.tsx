@@ -27,9 +27,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         </head>
         <body suppressHydrationWarning>
           <div className={styles.wrap}>
-            <Header />
             <div className={styles.main}>{children}</div>
-            <Footer />
             <ScrollRestoration />
             <Scripts />
           </div>

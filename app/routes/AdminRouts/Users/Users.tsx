@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
-
+import UserCard from "../UserCard/UserCard";
 import styles from "./Users.module.scss";
 import { useNavigate } from "react-router";
+import { useState } from "react";
 
 const Users = () => {
   const [isOpen, setIsOpen] = useState(true);
@@ -12,32 +12,17 @@ const Users = () => {
     navigate("/admin");
   };
 
-  // Предотвращение прокрутки страницы при открытом модальном окне
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
-
-    return () => {
-      document.body.style.overflow = "auto";
-    };
-  }, [isOpen]);
-
-  if (!isOpen) return null;
-
   return (
-    <div className={styles.modalOverlay}>
-      <div className={styles.modalContent}>
-        <div className={styles.modalHeader}>
-          <h1>USERS TABLE</h1>
-          <button className={styles.closeButton} onClick={handleClose}>
-            &times;
-          </button>
-        </div>
-        <div className={styles.modalBody}>
-          <div className={styles.main}></div>
+    <div className={styles.users}>
+      <div className={styles.modalHeader}>
+        <h1>USERS TABLE</h1>
+        <button className={styles.closeButton} onClick={handleClose}>
+          &times;
+        </button>
+      </div>
+      <div className={styles.modalBody}>
+        <div className={styles.main}>
+          <UserCard />
         </div>
       </div>
     </div>

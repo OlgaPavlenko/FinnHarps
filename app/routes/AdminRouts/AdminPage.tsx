@@ -21,50 +21,34 @@ const AdminPage = () => {
     navigate("/");
   };
 
-  // Предотвращение прокрутки страницы при открытом модальном окне
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "auto";
-    } else {
-      document.body.style.overflow = "auto";
-    }
-
-    return () => {
-      document.body.style.overflow = "auto";
-    };
-  }, [isOpen]);
-
-  if (!isOpen) return null;
   return (
-    <div className={styles.modalOverlay}>
-      <div className={styles.modalContent}>
-        <div className={styles.modalHeader}>
-          <h1>ADMIN DASHBOARD</h1>
-          <button className={styles.closeButton} onClick={handleClose}>
-            &times;
-          </button>
-        </div>
-        <div className={styles.modalBody}>
-          <div className={styles.main}>
-            <div className={styles.left}>
-              <List>
-                {ADMIN_MENU.map(({ option, icon }) => (
-                  <ListItem key={option} disablePadding>
-                    <ListItemButton
-                      onClick={() => navigate(`/admin/${option.toLowerCase()}`)}
-                    >
-                      <ListItemIcon>{React.createElement(icon)}</ListItemIcon>
-                      <ListItemText primary={option} />
-                    </ListItemButton>
-                  </ListItem>
-                ))}
-              </List>
-              <Divider orientation="vertical" />
-            </div>
-            <div className={styles.right}>
-              <p className={styles.text}>Welcome to the main admin page</p>
-              <Outlet />
-            </div>
+    <div className={styles.dashboard}>
+      <div className={styles.modalHeader}>
+        <h1>ADMIN DASHBOARD</h1>
+        <button className={styles.closeButton} onClick={handleClose}>
+          &times;
+        </button>
+      </div>
+      <div className={styles.modalBody}>
+        <div className={styles.main}>
+          <div className={styles.left}>
+            <List>
+              {ADMIN_MENU.map(({ option, icon }) => (
+                <ListItem key={option} disablePadding>
+                  <ListItemButton
+                    onClick={() => navigate(`/admin/${option.toLowerCase()}`)}
+                  >
+                    <ListItemIcon>{React.createElement(icon)}</ListItemIcon>
+                    <ListItemText primary={option} />
+                  </ListItemButton>
+                </ListItem>
+              ))}
+            </List>
+            <Divider orientation="vertical" />
+          </div>
+          <div className={styles.right}>
+            <p className={styles.text}>Welcome to the main admin page</p>
+            <Outlet />
           </div>
         </div>
       </div>
