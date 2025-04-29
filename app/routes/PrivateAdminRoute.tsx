@@ -13,6 +13,6 @@ export default function PrivateUserRoute() {
   if (isAuth && role === "admin") {
     return <Outlet />;
   } else {
-    <Navigate to="/login" replace />;
+    return <Navigate to="/login" replace />;
   }
 }

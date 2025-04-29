@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 
-import styles from "./Users.module.scss";
+import styles from "./Players.module.scss";
 import { useNavigate } from "react-router";
 
-const Users = () => {
+const Players = () => {
   const [isOpen, setIsOpen] = useState(true);
   const navigate = useNavigate();
 
@@ -31,7 +31,7 @@ const Users = () => {
     <div className={styles.modalOverlay}>
       <div className={styles.modalContent}>
         <div className={styles.modalHeader}>
-          <h1>USERS TABLE</h1>
+          <h1>PLAYERS TABLE</h1>
           <button className={styles.closeButton} onClick={handleClose}>
             &times;
           </button>
@@ -44,4 +44,4 @@ const Users = () => {
   );
 };
 
-export default Users;
+export default Players;

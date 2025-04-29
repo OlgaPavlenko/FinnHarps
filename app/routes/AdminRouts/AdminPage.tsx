@@ -5,20 +5,17 @@ import {
   ListItemButton,
   ListItemIcon,
 } from "@mui/material";
+import { Outlet, useNavigate } from "react-router";
 import React, { useEffect, useState } from "react";
 
 import { ADMIN_MENU } from "~/constants";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
 import ListItemText from "@mui/material/ListItemText";
-import MailIcon from "@mui/icons-material/Mail";
 import styles from "./AdminPage.module.scss";
-import { useNavigate } from "react-router";
 
 const AdminPage = () => {
   const [isOpen, setIsOpen] = useState(true);
   const navigate = useNavigate();
 
-  // Обработчик закрытия модального окна
   const handleClose = () => {
     setIsOpen(false);
     navigate("/");
@@ -27,7 +24,7 @@ const AdminPage = () => {
   // Предотвращение прокрутки страницы при открытом модальном окне
   useEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = "hidden";
+      document.body.style.overflow = "auto";
     } else {
       document.body.style.overflow = "auto";
     }
@@ -38,7 +35,6 @@ const AdminPage = () => {
   }, [isOpen]);
 
   if (!isOpen) return null;
-
   return (
     <div className={styles.modalOverlay}>
       <div className={styles.modalContent}>
@@ -54,7 +50,9 @@ const AdminPage = () => {
               <List>
                 {ADMIN_MENU.map(({ option, icon }) => (
                   <ListItem key={option} disablePadding>
-                    <ListItemButton>
+                    <ListItemButton
+                      onClick={() => navigate(`/admin/${option.toLowerCase()}`)}
+                    >
                       <ListItemIcon>{React.createElement(icon)}</ListItemIcon>
                       <ListItemText primary={option} />
                     </ListItemButton>
@@ -63,9 +61,9 @@ const AdminPage = () => {
               </List>
               <Divider orientation="vertical" />
             </div>
-            {/* <Divider orientation="vertical" /> */}
             <div className={styles.right}>
               <p className={styles.text}>Welcome to the main admin page</p>
+              <Outlet />
             </div>
           </div>
         </div>

@@ -14,5 +14,6 @@ export default [
   route("admin", "routes/PrivateAdminRoute.tsx", [
     route("", "routes/AdminRouts/AdminPage.tsx"),
     route("users", "routes/AdminRouts/Users/Users.tsx"),
+    route("players", "routes/AdminRouts/Players/Players.tsx"),
   ]),
 ] satisfies RouteConfig;
