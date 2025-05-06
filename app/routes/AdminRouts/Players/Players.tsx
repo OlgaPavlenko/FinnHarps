@@ -1,8 +1,10 @@
-import { useEffect, useState } from "react";
+import { Button, TextField } from "@mui/material";
 
 import PlayerCard from "../Player/PlayerCard";
+import SquadSelect from "../SquadSelect/SquadSelect";
 import styles from "./Players.module.scss";
 import { useNavigate } from "react-router";
+import { useState } from "react";
 
 const Players = () => {
   const [isOpen, setIsOpen] = useState(true);
@@ -23,6 +25,16 @@ const Players = () => {
       </div>
       <div className={styles.modalBody}>
         <div className={styles.main}>
+          <div className={styles.workBar}>
+            <Button variant="outlined">Add new player</Button>
+            <TextField
+              id="outlined-basic"
+              label="Search by name"
+              variant="outlined"
+              size="small"
+            />
+            <SquadSelect /> <Button variant="outlined">Sort</Button>
+          </div>
           <PlayerCard />
         </div>
       </div>

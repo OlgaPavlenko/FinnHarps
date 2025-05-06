@@ -22,3 +22,11 @@
 .closeButton:hover {
   color: #000;
 }
+
+.workBar {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  column-gap: 20px;
+  margin-bottom: 20px;
+}
